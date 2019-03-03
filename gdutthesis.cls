@@ -56,24 +56,16 @@
 \xeCJKsetcharclass{"0}{"2E7F}{0}
 \xeCJKsetcharclass{"2E80}{"FFFF}{1} %Address of Unicode
 
-\newcommand\installTTF{%
-	\setmainfont{Times New Roman}
-	\setsansfont{Arial}
-	\setmonofont{Courier New}
-	\setCJKmainfont{SimSun}
-	\setCJKsansfont{SimHei}
-	\setCJKfamilyfont{song}{SimSun}
-	\setCJKfamilyfont{hei}{SimHei}
-}
-
 \newcommand\installOTF{%
 	\setmainfont{Times New Roman} % could be changed to "Times New Roman PS Std"
 	\setsansfont{Arial}
 	\setmonofont{Courier New} 
 	\setCJKmainfont{Adobe Song Std}
 	\setCJKsansfont{Adobe Heiti Std}
+	\setCJKmonofont{Adobe Fangsong Std}
 	\setCJKfamilyfont{song}{Adobe Song Std}
 	\setCJKfamilyfont{hei}{Adobe Heiti Std}
+	\setCJKfamilyfont{fangsong}{Adobe Fangsong Std}
 }
 
 \installOTF
