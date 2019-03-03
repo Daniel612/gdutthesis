@@ -27,6 +27,7 @@
 
 \documentclass[otf,oneside,cn]{gdutthesis}
 \usepackage{mygdut}
+\usepackage{gbt7714}
 
 \begin{document}
 \graphicspath{{figures/}}
@@ -43,7 +44,6 @@
 \iftrans{\input{data/chap01}\input{data/chap02}}{\input{data/translation}\input{data/original}}
 
 % 参考文献
-\bibliographystyle{GBT7714-2005-UTF8-N}
 \iftrans{\bibliography{ref/refs}}{}
 
 % 致谢
