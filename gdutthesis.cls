@@ -125,9 +125,9 @@
 \newcommand\dlmu[2][6.5cm]{\hskip1pt\underline{\hb@xt@#1{\hss#2\hss}}\hskip3pt} %设置下划线
 
 \fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}\fancyhf{}}
-\fancypagestyle{mainpage}{\fancyhf{}\fancyfoot[ER,OR]{\xiaowu \thepage}}
-\fancypagestyle{backpage}{\fancyhf{}\fancyfoot[ER,OR]{\xiaowu \thepage}}
-\fancypagestyle{emptypage}{\fancyhf{}\fancyfoot[ER,OR]{\xiaowu \thepage}}
+\fancypagestyle{mainpage}{\fancyhf{}\fancyfoot[R]{\xiaowu \thepage}}
+\fancypagestyle{backpage}{\fancyhf{}\fancyfoot[R]{\xiaowu \thepage}}
+\fancypagestyle{emptypage}{\fancyhf{}\fancyfoot[R]{\xiaowu \thepage}}
 
 \renewcommand\frontmatter{%
 	\if@openright\cleardoublepage\else\clearpage\fi
