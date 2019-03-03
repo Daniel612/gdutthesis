@@ -45,9 +45,8 @@
 
 \newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}} 
 
-%------------------------------------------------------------------------
-%字体与字号
-%------------------------------------------------------------------------
+%%% 字体与字号
+
 \defaultfontfeatures{Mapping=tex-text} %Using the tex-text mapping is also equivalent to writing Ligatures=TeX. 
 %The use of the latter syntax is recommended for better compatibility with LuaTEX documents.
 %http://mirror.math.ku.edu/tex-archive/macros/latex/contrib/fontspec/fontspec.pdf
@@ -56,8 +55,8 @@
 \xeCJKsetcharclass{"0}{"2E7F}{0}
 \xeCJKsetcharclass{"2E80}{"FFFF}{1} %Address of Unicode
 
-\newcommand\installOTF{%
-	\setmainfont{Times New Roman} % could be changed to "Times New Roman PS Std"
+\newcommand\installOTF{
+	\setmainfont{Times New Roman}
 	\setsansfont{Arial}
 	\setmonofont{Courier New} 
 	\setCJKmainfont{Adobe Song Std}
@@ -94,9 +93,8 @@
 
 \renewcommand{\baselinestretch}{1.25}  % 1.5行距，计算公式 “行距/1.2=倍数”
 
-%------------------------------------------------------------------------
-%中文元素
-%------------------------------------------------------------------------
+%%% 中文元素
+
 \renewcommand\contentsname{目\hspace{5em}录}
 \newcommand\ackname{致\hspace{1em}谢}
 \newcommand\equationname{公式}
@@ -108,9 +106,8 @@
 \newcommand\zhtoday{\CJK@today}
 \newcommand\entoday{\today{}}
 
-%------------------------------------------------------------------------
-%页边距与页面样式
-%------------------------------------------------------------------------
+%%% 页边距与页面样式
+
 \geometry{top=28mm,bottom=15mm,left=30mm,right=20mm,nohead}
 \geometry{footskip=10mm}
  
@@ -150,9 +147,9 @@
 	\@afterheading
 }
 
-%------------------------------------------------------------------------
-%附录
-%------------------------------------------------------------------------
+
+%%% 附录
+
 \newcounter{appx}[chapter]
 \renewcommand{\theappx}{\Alph{appx}}
 \newcommand{\appx}[1]{\refstepcounter{appx}%
@@ -173,9 +170,8 @@
 
 \newenvironment{appxchp}{\clearpage\@afterheading}{}
 
-%------------------------------------------------------------------------
-%单面打印设置
-%------------------------------------------------------------------------
+%%% 单面打印设置
+
 \renewcommand\cleardoublepage{\clearpage\if@openright\ifodd\c@page
 	\else
 	\newpage{}
@@ -187,9 +183,8 @@
 	\clearpage\fi\fi%
 }
 
-%------------------------------------------------------------------------
-%摘要
-%------------------------------------------------------------------------
+%%% 摘要
+
 \newcommand\cabstractname{摘\hspace{2em}要}
 \newcommand\ckeywordsname{{\heiti \sihao \textbf{关键词}}}
 \newcommand\ckeywords[1]{\xiaosi \songti \ckeywordsname: #1}
@@ -222,9 +217,9 @@
 	{\thecontentslabel\quad}{}
 	{\titlerule*{.}\contentspage}
 
-%------------------------------------------------------------------------
-%标题与目录设置
-%------------------------------------------------------------------------
+
+%%% 标题与目录设置
+
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
 						\global\@topnum\z@
 						\@afterindentfalse
@@ -293,9 +288,9 @@
 	{\@latex@warning{Empty `thebibliography' environment}}%
 	\endlist\frenchspacing}
 
-%------------------------------------------------------------------------
-%表格
-%------------------------------------------------------------------------
+
+%%% 表格
+
 \aboverulesep=0pt
 \belowrulesep=0pt
 \heavyrulewidth=0.10em
@@ -332,18 +327,16 @@
 
 \newcommand{\Ucaption}[2]{\caption{#1}\raisebox{10.5pt}[0pt]{\hspace*{0.6\linewidth} \heiti \bfseries #2}} %10.5pt当前五号字体大小
 
-%------------------------------------------------------------------------
-%全局脚注
-%------------------------------------------------------------------------
+
+%%% 全局脚注
 
 %\ifthenelse{\value{footnote}>1}{\renewcommand{\thefootnote}{注：\arabic{footnote}.}}{\renewcommand{\thefootnote}{\hspace{2em}\arabic{footnote}.}}
 
 %\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
 
-%------------------------------------------------------------------------
-%定理环境
+
+%%% 定理环境
 %http://mirror.bjtu.edu.cn/CTAN/macros/latex/required/amslatex/amscls/doc/amsthdoc.pdf
-%------------------------------------------------------------------------
  
 \renewtheoremstyle{nonumberplain}%
 {\item[\hspace*{2em} \theorem@headerfont ##1\ \theorem@separator]}%
@@ -375,19 +368,19 @@
 \newtheorem{problem}{问题}[section]
 \newtheorem{remark}{注释}[section]
 
-%------------------------------------------------------------------------
-%封面
-%------------------------------------------------------------------------
-\def\serialno#1{\def\@serialno{#1}} % 学号
-\def\title#1{\def\@title{#1}} % 中文题目
-\def\author#1{\def\@author{#1}} % 中文作者名
+
+%%% 封面
+
+\def\serialno#1{\def\@serialno{#1}}		% 学号
+\def\title#1{\def\@title{#1}}			% 中文题目
+\def\author#1{\def\@author{#1}}			% 中文作者名
 \def\supervisor#1{\def\@supervisor{#1}} % 导师
-\def\college#1{\def\@college{#1}} % 学院
-\def\major#1{\def\@major{#1}} %专业
-\def\majorfield#1{\def\@majorfield{#1}} %专业方向
-\def\grade#1{\def\@grade{#1}} %年级，入学年份
-\def\class#1{\def\@class{#1}} %班
+\def\college#1{\def\@college{#1}}		% 学院
+\def\major#1{\def\@major{#1}}			% 专业
+\def\majorfield#1{\def\@majorfield{#1}} % 专业方向
+\def\grade#1{\def\@grade{#1}}			% 年级，入学年份
+\def\class#1{\def\@class{#1}}			% 班
 
 \endinput
-%%
+
 %% End of file `gdutthesis.cls'.
