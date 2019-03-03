@@ -55,7 +55,7 @@
 \RequirePackage[center]{titlesec}
 \RequirePackage{titletoc}
 \RequirePackage{graphicx}
-\RequirePackage[config]{subfig}
+\RequirePackage{subfig}
 \RequirePackage{float}
 \RequirePackage{array}
 \RequirePackage{booktabs}
@@ -66,7 +66,8 @@
 \RequirePackage{amsmath,amssymb,bm}
 \RequirePackage[varg]{txfonts}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem} %宏包兼容
-\RequirePackage[CJKnumber,no-math,BoldFont,SlantFont]{xeCJK}
+\RequirePackage[no-math,BoldFont,SlantFont]{xeCJK}
+\RequirePackage{CJKnumb}
 \RequirePackage{indentfirst}
 \RequirePackage[numbers,sort&compress,square]{natbib}
 \RequirePackage[CJKbookmarks=true,pdfborder=0 0 1]{hyperref}
