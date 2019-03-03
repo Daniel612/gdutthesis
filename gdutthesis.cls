@@ -1,55 +1,22 @@
-%% Old File `scnuthesis.cls` belongs to Joseph Pan <cs.wzpan@gmail.com>
-%%
-%% 
-%% This file may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3a
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in:
-%% 
-%% http://www.latex-project.org/lppl.txt
-%% 
-%% and version 1.3a or later is part of all distributions of LaTeX
-%% version 2004/10/01 or later.
-%% 
-%% To produce the documentation run the original source files ending with `.dtx'
-%% through LaTeX.
-%% 
-%% Any Suggestions : Contact me <jdse88@gmail.com>
-%% Thanks Joseph Pan!
-%% Thanks the thuthesis class!
-%% Thanks the original NUDT paper class!
-%% 
-%------------------------------------------------------------------------
-%声明
-%------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{gdutthesis}
+\ProvidesClass{gdutthesis}[2019/03/03 GDUT Thesis Class]
 
-\newif\ifistwoside\istwosidefalse
-\DeclareOption{twoside}{\istwosidetrue}
+%% Fallback
+\DeclareOption*{
+	\ClassWarning{gdutthesis}{Unknown Option '\CurrentOption'}
+}
 
-\newif\ifisttf\isttftrue
-\DeclareOption{ttf}{\isttftrue}
-\DeclareOption{otf}{\isttffalse}
+%% Excute default options...
 
-\newif\ifistranslation\istranslationtrue
-\DeclareOption{en}{\istranslationtrue}
-\DeclareOption{cn}{\istranslationfalse}
-
-\DeclareOption*{\PackageWarning{gdutthesis}{Unknown Option '\CurrentOption'}}
+%% Process given options
 \ProcessOptions\relax
 
+%% Load base
+% \LoadClass[a4paper,12pt,openright,twoside]{book}
+\LoadClass[a4paper,12pt,openany,oneside]{book}
+
+%% Load additional packages and commands.
 \RequirePackage{ifthen,calc}
-
-\ifistwoside
-	\LoadClass[a4paper,12pt,openright,twoside]{book}
-\else
-	\LoadClass[a4paper,12pt,openany,oneside]{book}
-\fi
-
-%------------------------------------------------------------------------
-%宏包
-%------------------------------------------------------------------------  
 \RequirePackage[includefoot]{geometry}
 \RequirePackage{fancyhdr}
 \RequirePackage[center]{titlesec}
@@ -72,9 +39,7 @@
 \RequirePackage[numbers,sort&compress,square]{natbib}
 \RequirePackage[CJKbookmarks=true,pdfborder=0 0 1]{hyperref}
 
-%------------------------------------------------------------------------
-%其他
-%------------------------------------------------------------------------
+%% Additional TeX/LaTeX code...
 
 \renewcommand{\tabularxcolumn}[1]{m{#1}} %表格左右居中对齐
 
@@ -111,11 +76,7 @@
 	\setCJKfamilyfont{hei}{Adobe Heiti Std}
 }
 
-\ifisttf
-	\installTTF
-\else
-	\installOTF
-\fi
+\installOTF
 
 \newcommand{\song}{\CJKfamily{song}}    % 宋体
 \newcommand{\hei}{\CJKfamily{hei}}      % 黑体
@@ -163,17 +124,10 @@
  
 \newcommand\dlmu[2][6.5cm]{\hskip1pt\underline{\hb@xt@#1{\hss#2\hss}}\hskip3pt} %设置下划线
 
-\ifistwoside
-	\fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}\fancyhf{}}
-	\fancypagestyle{mainpage}{\fancyhf{}\fancyfoot[EL,OR]{\xiaowu \thepage}}
-	\fancypagestyle{backpage}{\fancyhf{}\fancyfoot[EL,OR]{\xiaowu \thepage}}
-	\fancypagestyle{emptypage}{\fancyhf{}\fancyfoot[EL,OR]{\xiaowu \thepage}}
-\else
-	\fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}\fancyhf{}}
-	\fancypagestyle{mainpage}{\fancyhf{}\fancyfoot[ER,OR]{\xiaowu \thepage}}
-	\fancypagestyle{backpage}{\fancyhf{}\fancyfoot[ER,OR]{\xiaowu \thepage}}
-	\fancypagestyle{emptypage}{\fancyhf{}\fancyfoot[ER,OR]{\xiaowu \thepage}}
-\fi
+\fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}\fancyhf{}}
+\fancypagestyle{mainpage}{\fancyhf{}\fancyfoot[ER,OR]{\xiaowu \thepage}}
+\fancypagestyle{backpage}{\fancyhf{}\fancyfoot[ER,OR]{\xiaowu \thepage}}
+\fancypagestyle{emptypage}{\fancyhf{}\fancyfoot[ER,OR]{\xiaowu \thepage}}
 
 \renewcommand\frontmatter{%
 	\if@openright\cleardoublepage\else\clearpage\fi
@@ -441,14 +395,6 @@
 \def\majorfield#1{\def\@majorfield{#1}} %专业方向
 \def\grade#1{\def\@grade{#1}} %年级，入学年份
 \def\class#1{\def\@class{#1}} %班
-
-\ifistranslation
-	\newcommand{\gduttranslation}{1}
-\else
-	\newcommand{\gduttranslation}{0}
-\fi
-
-\newcommand{\iftrans}[2]{\ifthenelse{\gduttranslation=0}{#1}{#2}}
 
 \endinput
 %%
