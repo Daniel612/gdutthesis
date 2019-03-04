@@ -1,11 +1,8 @@
-thesis: thesis.tex thesis.pdf
-
-thesis.pdf: thesis.tex
-	xelatex thesis
-	bibtex thesis
-	bibtex thesis
-	xelatex thesis
-	xelatex thesis
+main.pdf: main.tex
+	xelatex main
+	bibtex main
+	xelatex main
+	xelatex main
 
 clean:
-	rm -v *.aux *.log *.toc *.ind *.gls *.glo *.idx *.ilg *.out *.bbl *.thm *.blg *.lot *.lof *~
+	rm -v *.aux *.log *.toc *.ind *.gls *.glo *.idx *.ilg *.out *.bbl *.thm *.blg *.lot *.lof *.synctex.gz *~
