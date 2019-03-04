@@ -412,8 +412,8 @@
 \def\college#1{\def\@college{#1}}		% 学院
 \def\major#1{\def\@major{#1}}			% 专业
 \def\majorfield#1{\def\@majorfield{#1}} % 专业方向
-\def\grade#1{\def\@grade{#1}}			% 年级，入学年份
-\def\class#1{\def\@class{#1}}			% 班
+\def\grade#1{\def\@grade{#1}}			% 年级(入学年份)
+\def\class#1{\def\@class{#1}}			% 班别
 
 \endinput
 

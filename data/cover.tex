@@ -1,14 +1,14 @@
 %Environment fengmian
 
-\serialno{310900XXXX} % 学号
-\title{XXXX} % 中文题目
-\author{JD} % 中文作者名
-\supervisor{CJ} % 导师
-\college{WLGDGC} % 学院
-\major{EE}%专业
-\majorfield{ME}%专业方向
-\grade{2009} %年级，入学年份
-\class{4} %班
+\serialno{3115009999} % 学号
+\title{LaTeX模板的编写与使用} % 中文题目
+\author{张大牛} % 中文作者名
+\supervisor{马一龙} % 导师
+\college{计算机学院} % 学院
+\major{软件工程} % 专业
+\majorfield{软件服务与安全方向} % 专业方向
+\grade{2015} % 年级（入学年份）
+\class{4} % 班别
 
 %------------------------------------------------------------------------
 %制作封面（没必要不要动）
@@ -26,7 +26,9 @@
 \end{center}
 \vspace{20mm}
 \begin{center}
-{\heiti \erhao \textbf{\@title}}
+\makeatletter
+{\heiti \erhao {\textbf{\@title}}}
+\makeatother
 \end{center}
 \vspace{28mm}
 \begin{center}
