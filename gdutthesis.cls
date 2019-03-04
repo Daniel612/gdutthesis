@@ -1,61 +1,28 @@
-%% Old File `scnuthesis.cls` belongs to Joseph Pan <cs.wzpan@gmail.com>
-%%
-%% 
-%% This file may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3a
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in:
-%% 
-%% http://www.latex-project.org/lppl.txt
-%% 
-%% and version 1.3a or later is part of all distributions of LaTeX
-%% version 2004/10/01 or later.
-%% 
-%% To produce the documentation run the original source files ending with `.dtx'
-%% through LaTeX.
-%% 
-%% Any Suggestions : Contact me <jdse88@gmail.com>
-%% Thanks Joseph Pan!
-%% Thanks the thuthesis class!
-%% Thanks the original NUDT paper class!
-%% 
-%------------------------------------------------------------------------
-%声明
-%------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{gdutthesis}
+\ProvidesClass{gdutthesis}[2019/03/03 GDUT Thesis Class]
 
-\newif\ifistwoside\istwosidefalse
-\DeclareOption{twoside}{\istwosidetrue}
+%% Fallback
+\DeclareOption*{
+	\ClassWarning{gdutthesis}{Unknown Option '\CurrentOption'}
+}
 
-\newif\ifisttf\isttftrue
-\DeclareOption{ttf}{\isttftrue}
-\DeclareOption{otf}{\isttffalse}
+%% Excute default options...
 
-\newif\ifistranslation\istranslationtrue
-\DeclareOption{en}{\istranslationtrue}
-\DeclareOption{cn}{\istranslationfalse}
-
-\DeclareOption*{\PackageWarning{gdutthesis}{Unknown Option '\CurrentOption'}}
+%% Process given options
 \ProcessOptions\relax
 
+%% Load base
+% \LoadClass[a4paper,12pt,openright,twoside]{book}
+\LoadClass[a4paper,12pt,openany,oneside]{book}
+
+%% Load additional packages and commands.
 \RequirePackage{ifthen,calc}
-
-\ifistwoside
-	\LoadClass[a4paper,12pt,openright,twoside]{book}
-\else
-	\LoadClass[a4paper,12pt,openany,oneside]{book}
-\fi
-
-%------------------------------------------------------------------------
-%宏包
-%------------------------------------------------------------------------  
 \RequirePackage[includefoot]{geometry}
 \RequirePackage{fancyhdr}
 \RequirePackage[center]{titlesec}
 \RequirePackage{titletoc}
 \RequirePackage{graphicx}
-\RequirePackage[config]{subfig}
+\RequirePackage{subfig}
 \RequirePackage{float}
 \RequirePackage{array}
 \RequirePackage{booktabs}
@@ -66,22 +33,54 @@
 \RequirePackage{amsmath,amssymb,bm}
 \RequirePackage[varg]{txfonts}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem} %宏包兼容
-\RequirePackage[CJKnumber,no-math,BoldFont,SlantFont]{xeCJK}
+\RequirePackage[no-math,BoldFont,SlantFont]{xeCJK}
+\RequirePackage{CJKnumb}
 \RequirePackage{indentfirst}
 \RequirePackage[numbers,sort&compress,square]{natbib}
 \RequirePackage[CJKbookmarks=true,pdfborder=0 0 1]{hyperref}
+\RequirePackage{listings}
+\RequirePackage{fancyvrb}
+\RequirePackage[chapter]{algorithm}
+\RequirePackage{algorithmic}
 
-%------------------------------------------------------------------------
-%其他
-%------------------------------------------------------------------------
+%% Additional TeX/LaTeX code...
 
 \renewcommand{\tabularxcolumn}[1]{m{#1}} %表格左右居中对齐
 
-\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}} 
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
 
-%------------------------------------------------------------------------
-%字体与字号
-%------------------------------------------------------------------------
+\lstset{
+    columns=flexible,sensitive=true,lineskip=-3pt,
+    basicstyle=\small\ttfamily,
+    keywordstyle=\color{black},
+    stringstyle=\ttfamily,
+    numbers=left,
+    numbersep=0.5em,
+    numberstyle=\small,
+    xleftmargin=1.5em,
+    framexleftmargin=1em,
+    aboveskip=0.5em,
+    showstringspaces=false,
+    breaklines=true,extendedchars=true, %跨行
+    escapeinside={`}{`}
+}
+
+\algsetup{indent=3em}
+\floatname{algorithm}{算法}
+\renewcommand{\algorithmicrequire}{\textbf{已知:}}
+\renewcommand{\algorithmicensure}{\textbf{求:}}
+
+\DefineVerbatimEnvironment{code}{Verbatim}%
+    {frame=single,framerule=0.3mm,rulecolor=\color{black},%
+    fillcolor=\color{red!20!green!20!blue!20},framesep=1mm,fontsize=\small}
+
+\newcommand{\ve}[1]{\ensuremath{\bm #1}}
+
+% tabularx 中的 Z 环境，居中自动调整
+\newcolumntype{Z}{>{\centering\arraybackslash}X}
+
+%%% 字体与字号
+
 \defaultfontfeatures{Mapping=tex-text} %Using the tex-text mapping is also equivalent to writing Ligatures=TeX. 
 %The use of the latter syntax is recommended for better compatibility with LuaTEX documents.
 %http://mirror.math.ku.edu/tex-archive/macros/latex/contrib/fontspec/fontspec.pdf
@@ -90,31 +89,19 @@
 \xeCJKsetcharclass{"0}{"2E7F}{0}
 \xeCJKsetcharclass{"2E80}{"FFFF}{1} %Address of Unicode
 
-\newcommand\installTTF{%
+\newcommand\installOTF{
 	\setmainfont{Times New Roman}
-	\setsansfont{Arial}
-	\setmonofont{Courier New}
-	\setCJKmainfont{SimSun}
-	\setCJKsansfont{SimHei}
-	\setCJKfamilyfont{song}{SimSun}
-	\setCJKfamilyfont{hei}{SimHei}
-}
-
-\newcommand\installOTF{%
-	\setmainfont{Times New Roman} % could be changed to "Times New Roman PS Std"
 	\setsansfont{Arial}
 	\setmonofont{Courier New} 
 	\setCJKmainfont{Adobe Song Std}
 	\setCJKsansfont{Adobe Heiti Std}
+	\setCJKmonofont{Adobe Fangsong Std}
 	\setCJKfamilyfont{song}{Adobe Song Std}
 	\setCJKfamilyfont{hei}{Adobe Heiti Std}
+	\setCJKfamilyfont{fangsong}{Adobe Fangsong Std}
 }
 
-\ifisttf
-	\installTTF
-\else
-	\installOTF
-\fi
+\installOTF
 
 \newcommand{\song}{\CJKfamily{song}}    % 宋体
 \newcommand{\hei}{\CJKfamily{hei}}      % 黑体
@@ -140,9 +127,8 @@
 
 \renewcommand{\baselinestretch}{1.25}  % 1.5行距，计算公式 “行距/1.2=倍数”
 
-%------------------------------------------------------------------------
-%中文元素
-%------------------------------------------------------------------------
+%%% 中文元素
+
 \renewcommand\contentsname{目\hspace{5em}录}
 \newcommand\ackname{致\hspace{1em}谢}
 \newcommand\equationname{公式}
@@ -154,25 +140,17 @@
 \newcommand\zhtoday{\CJK@today}
 \newcommand\entoday{\today{}}
 
-%------------------------------------------------------------------------
-%页边距与页面样式
-%------------------------------------------------------------------------
+%%% 页边距与页面样式
+
 \geometry{top=28mm,bottom=15mm,left=30mm,right=20mm,nohead}
 \geometry{footskip=10mm}
  
 \newcommand\dlmu[2][6.5cm]{\hskip1pt\underline{\hb@xt@#1{\hss#2\hss}}\hskip3pt} %设置下划线
 
-\ifistwoside
-	\fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}\fancyhf{}}
-	\fancypagestyle{mainpage}{\fancyhf{}\fancyfoot[EL,OR]{\xiaowu \thepage}}
-	\fancypagestyle{backpage}{\fancyhf{}\fancyfoot[EL,OR]{\xiaowu \thepage}}
-	\fancypagestyle{emptypage}{\fancyhf{}\fancyfoot[EL,OR]{\xiaowu \thepage}}
-\else
-	\fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}\fancyhf{}}
-	\fancypagestyle{mainpage}{\fancyhf{}\fancyfoot[ER,OR]{\xiaowu \thepage}}
-	\fancypagestyle{backpage}{\fancyhf{}\fancyfoot[ER,OR]{\xiaowu \thepage}}
-	\fancypagestyle{emptypage}{\fancyhf{}\fancyfoot[ER,OR]{\xiaowu \thepage}}
-\fi
+\fancypagestyle{plain}{\renewcommand{\headrulewidth}{0pt}\fancyhf{}}
+\fancypagestyle{mainpage}{\fancyhf{}\fancyfoot[R]{\xiaowu \thepage}}
+\fancypagestyle{backpage}{\fancyhf{}\fancyfoot[R]{\xiaowu \thepage}}
+\fancypagestyle{emptypage}{\fancyhf{}\fancyfoot[R]{\xiaowu \thepage}}
 
 \renewcommand\frontmatter{%
 	\if@openright\cleardoublepage\else\clearpage\fi
@@ -203,9 +181,9 @@
 	\@afterheading
 }
 
-%------------------------------------------------------------------------
-%附录
-%------------------------------------------------------------------------
+
+%%% 附录
+
 \newcounter{appx}[chapter]
 \renewcommand{\theappx}{\Alph{appx}}
 \newcommand{\appx}[1]{\refstepcounter{appx}%
@@ -226,9 +204,8 @@
 
 \newenvironment{appxchp}{\clearpage\@afterheading}{}
 
-%------------------------------------------------------------------------
-%单面打印设置
-%------------------------------------------------------------------------
+%%% 单面打印设置
+
 \renewcommand\cleardoublepage{\clearpage\if@openright\ifodd\c@page
 	\else
 	\newpage{}
@@ -240,9 +217,8 @@
 	\clearpage\fi\fi%
 }
 
-%------------------------------------------------------------------------
-%摘要
-%------------------------------------------------------------------------
+%%% 摘要
+
 \newcommand\cabstractname{摘\hspace{2em}要}
 \newcommand\ckeywordsname{{\heiti \sihao \textbf{关键词}}}
 \newcommand\ckeywords[1]{\xiaosi \songti \ckeywordsname: #1}
@@ -275,9 +251,9 @@
 	{\thecontentslabel\quad}{}
 	{\titlerule*{.}\contentspage}
 
-%------------------------------------------------------------------------
-%标题与目录设置
-%------------------------------------------------------------------------
+
+%%% 标题与目录设置
+
 \renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
 						\global\@topnum\z@
 						\@afterindentfalse
@@ -346,9 +322,9 @@
 	{\@latex@warning{Empty `thebibliography' environment}}%
 	\endlist\frenchspacing}
 
-%------------------------------------------------------------------------
-%表格
-%------------------------------------------------------------------------
+
+%%% 表格
+
 \aboverulesep=0pt
 \belowrulesep=0pt
 \heavyrulewidth=0.10em
@@ -385,18 +361,16 @@
 
 \newcommand{\Ucaption}[2]{\caption{#1}\raisebox{10.5pt}[0pt]{\hspace*{0.6\linewidth} \heiti \bfseries #2}} %10.5pt当前五号字体大小
 
-%------------------------------------------------------------------------
-%全局脚注
-%------------------------------------------------------------------------
+
+%%% 全局脚注
 
 %\ifthenelse{\value{footnote}>1}{\renewcommand{\thefootnote}{注：\arabic{footnote}.}}{\renewcommand{\thefootnote}{\hspace{2em}\arabic{footnote}.}}
 
 %\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
 
-%------------------------------------------------------------------------
-%定理环境
+
+%%% 定理环境
 %http://mirror.bjtu.edu.cn/CTAN/macros/latex/required/amslatex/amscls/doc/amsthdoc.pdf
-%------------------------------------------------------------------------
  
 \renewtheoremstyle{nonumberplain}%
 {\item[\hspace*{2em} \theorem@headerfont ##1\ \theorem@separator]}%
@@ -428,27 +402,19 @@
 \newtheorem{problem}{问题}[section]
 \newtheorem{remark}{注释}[section]
 
-%------------------------------------------------------------------------
-%封面
-%------------------------------------------------------------------------
-\def\serialno#1{\def\@serialno{#1}} % 学号
-\def\title#1{\def\@title{#1}} % 中文题目
-\def\author#1{\def\@author{#1}} % 中文作者名
+
+%%% 封面
+
+\def\serialno#1{\def\@serialno{#1}}		% 学号
+\def\title#1{\def\@title{#1}}			% 中文题目
+\def\author#1{\def\@author{#1}}			% 中文作者名
 \def\supervisor#1{\def\@supervisor{#1}} % 导师
-\def\college#1{\def\@college{#1}} % 学院
-\def\major#1{\def\@major{#1}} %专业
-\def\majorfield#1{\def\@majorfield{#1}} %专业方向
-\def\grade#1{\def\@grade{#1}} %年级，入学年份
-\def\class#1{\def\@class{#1}} %班
-
-\ifistranslation
-	\newcommand{\gduttranslation}{1}
-\else
-	\newcommand{\gduttranslation}{0}
-\fi
-
-\newcommand{\iftrans}[2]{\ifthenelse{\gduttranslation=0}{#1}{#2}}
+\def\college#1{\def\@college{#1}}		% 学院
+\def\major#1{\def\@major{#1}}			% 专业
+\def\majorfield#1{\def\@majorfield{#1}} % 专业方向
+\def\grade#1{\def\@grade{#1}}			% 年级(入学年份)
+\def\class#1{\def\@class{#1}}			% 班别
 
 \endinput
-%%
+
 %% End of file `gdutthesis.cls'.
