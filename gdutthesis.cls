@@ -93,12 +93,11 @@
 	\setmainfont{Times New Roman}
 	\setsansfont{Arial}
 	\setmonofont{Courier New} 
-	\setCJKmainfont{Adobe Song Std}
-	\setCJKsansfont{Adobe Heiti Std}
-	\setCJKmonofont{Adobe Fangsong Std}
-	\setCJKfamilyfont{song}{Adobe Song Std}
-	\setCJKfamilyfont{hei}{Adobe Heiti Std}
-	\setCJKfamilyfont{fangsong}{Adobe Fangsong Std}
+	\setCJKmainfont{Source Han Serif SC}
+	\setCJKsansfont{Source Han Sans SC}
+	\setCJKmonofont{Source Han Serif SC}
+	\setCJKfamilyfont{song}{Source Han Serif SC}
+	\setCJKfamilyfont{hei}{Source Han Sans SC}
 }
 
 \installOTF

@@ -6,7 +6,7 @@ gdutthesis 是根据[《广东工业大学本科毕业设计(论文)手册》](h
 ### 环境配置
 使用模板之前需要在操作系统上安装 [TeX](https://zh.wikipedia.org/wiki/TeX) 系统（例如 [TexLive](https://www.tug.org/texlive/)、[MacTex](http://www.tug.org/mactex/) 和 [MiKTeX](https://miktex.org/)）。如果你想下载体积较小的 [BasicTeX](http://www.tug.org/mactex/morepackages.html)，则还需要安装一些该模板中需要宏包（已在样板 [`main.pdf`](main.pdf) 中列出）。推荐使用自带的 TeX Live 包管理器 [`tlmgr`](https://tug.org/texlive/tlmgr.html) 对宏包进行管理以及 Visual Studio Code 的 [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) 插件来编写文档。
 
-此外还要确保操作系统中安装了 Adobe Song Std（宋体）、Adobe Heiti Std（黑体） 和 Adobe Fangsong Std（仿宋）字体。
+由于文档使用了中文排版，因此需要安装中文字体。出于版权和跨平台的考虑，该模板采用了 Adobe 与 Google 合作开发的[思源黑体](https://github.com/adobe-fonts/source-han-sans/blob/release/OTF/SimplifiedChinese/SourceHanSansSC-Regular.otf)和[思源宋体](https://github.com/adobe-fonts/source-han-serif/blob/release/OTF/SimplifiedChinese/SourceHanSerifSC-Light.otf)。如果想了解更多有关字体的用法，请参考[《在 LaTeX 中使用 OpenType 字体》](https://stone-zeng.github.io/2018-08-08-use-opentype-fonts/)。
 ### 文档编译
 编译文档请使用 XeLaTeX 引擎。在终端执行
 ``` shell
