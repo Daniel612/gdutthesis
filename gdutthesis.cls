@@ -130,6 +130,7 @@
 
 \renewcommand\contentsname{目\hspace{5em}录}
 \newcommand\ackname{致\hspace{1em}谢}
+\newcommand\conname{结\hspace{1em}论}
 \newcommand\equationname{公式}
 \renewcommand\bibname{参\hspace{1em}考\hspace{1em}文\hspace{1em}献}
 \renewcommand\figurename{图}
@@ -180,6 +181,13 @@
 	\@afterheading
 }
 
+\newenvironment{con}{
+	\thispagestyle{emptypage}
+	\chapter*{\conname}
+	\addcontentsline{toc}{chapter}{结论}%非章节部分加入目录
+	\xiaosi
+	\@afterheading
+}
 
 %%% 附录
 
