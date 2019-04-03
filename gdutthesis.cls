@@ -42,8 +42,15 @@
 \RequirePackage{fancyvrb}
 \RequirePackage[chapter]{algorithm}
 \RequirePackage{algorithmic}
+\RequirePackage{enumitem}	% 遍历列表环境
 
 %% Additional TeX/LaTeX code...
+
+% 设置列表环境的行高
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setdescription{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+% 结束-设置列表环境的行高
 
 \renewcommand{\tabularxcolumn}[1]{m{#1}} %表格左右居中对齐
 
