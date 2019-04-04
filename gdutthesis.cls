@@ -47,9 +47,11 @@
 %% Additional TeX/LaTeX code...
 
 % 设置列表环境的行高
-\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
-\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
-\setdescription{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=0pt,itemindent=1em,labelsep=0pt}
+\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=0pt,itemindent=0.4em}
+\setdescription{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt,itemindent=0.5em}
+\renewcommand{\labelenumi}{\arabic{enumi}、}
+\renewcommand{\labelenumii}{（\arabic{enumii}）}
 % 结束-设置列表环境的行高
 
 \renewcommand{\tabularxcolumn}[1]{m{#1}} %表格左右居中对齐
