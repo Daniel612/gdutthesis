@@ -311,7 +311,7 @@
 \setlength\belowdisplayshortskip{\abovedisplayshortskip}%
 }
 
-\setlength{\parindent}{2.5em}
+\setlength{\parindent}{2em}
 \setlength{\parskip}{0bp \@plus .5bp \@minus .5bp}
 
 \renewenvironment{thebibliography}[1]{%
