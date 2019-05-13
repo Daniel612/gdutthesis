@@ -43,12 +43,30 @@
 \RequirePackage[chapter]{algorithm}
 \RequirePackage{algorithmic}
 \RequirePackage{enumitem}	% 遍历列表环境
+\RequirePackage{tabu}	%可扩展表格
+\usepackage{subfig}
 
 %% Additional TeX/LaTeX code...
 
 % 设置列表环境的行高
-\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=0pt,itemindent=1em,labelsep=0pt}
-\setitemize[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=0pt,itemindent=0.4em}
+\setenumerate{
+	topsep=0pt,
+	partopsep=0pt,
+	itemindent=1.5em,
+	labelsep=0em,
+	leftmargin=\leftmargin-0.5em,
+	parsep=\parskip,
+	itemsep=0pt,
+	listparindent=2em,
+	}
+\setitemize[1]{
+	itemsep=0pt,
+	partopsep=0pt,
+	parsep=\parskip,
+	topsep=0pt,
+	labelsep=1em,
+	itemindent=1em,
+	}
 \setdescription{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt,itemindent=0.5em}
 \renewcommand{\labelenumi}{\arabic{enumi}、}
 \renewcommand{\labelenumii}{（\arabic{enumii}）}
@@ -58,20 +76,35 @@
 
 \newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
 
+%代码环境设置
 \lstset{
-    columns=flexible,sensitive=true,lineskip=-3pt,
-    basicstyle=\small\ttfamily,
-    keywordstyle=\color{black},
-    stringstyle=\ttfamily,
-    numbers=left,
-    numbersep=0.5em,
-    numberstyle=\small,
-    xleftmargin=1.5em,
-    framexleftmargin=1em,
-    aboveskip=0.5em,
-    showstringspaces=false,
-    breaklines=true,extendedchars=true, %跨行
-    escapeinside={`}{`}
+	columns=flexible,
+	sensitive=true,
+	lineskip=0pt,
+    basicstyle=\small\ttfamily,	% 字体样式
+	keywordstyle=\color{blue!70},
+	commentstyle=\color{red!50!green!50!blue!50},
+	stringstyle=\ttfamily,
+	rulesepcolor=\color{red!20!green!20!blue!20},
+	frame=none,
+    numbers=left,	%行号位置
+    numbersep=1.5em,	%行号与代码的距离
+    numberstyle=\small,	%行号样式
+    xleftmargin=2em,
+    framexleftmargin=0em,
+	aboveskip=0em,
+	showspaces=false,	%添加特定下划线展示空格
+	showstringspaces=false,	%字符串中的下划线
+	showtabs=false,
+	tabsize=2,	%设置制表符大小为2个空格
+	captionpos=b,	%将标题位置设置为底部
+	breaklines=true,	%自动换行
+	breakatwhitespace=false,	%空格处换行
+	extendedchars=true, %跨行
+	escapeinside={`}{`},	%逃逸符号
+	upquote=true,
+	aboveskip=0.7em,	%上方距离
+	belowskip=0.3em,	%下方距离
 }
 
 \algsetup{indent=3em}
@@ -126,7 +159,7 @@
 \newcommand{\xiaosan}{\fontsize{15bp}{\baselineskip}\selectfont}
 \newcommand{\sihao}{\fontsize{14bp}{\baselineskip}\selectfont}
 \newcommand{\xiaosi}{\fontsize{12bp}{\baselineskip}\selectfont}
-\newcommand{\wuhao}{\fontsize{10.5bp}{\baselineskip}\selectfont}
+\newcommand{\wuhao}{\fontsize{10.5bp}{1em}\selectfont}
 \newcommand{\xiaowu}{\fontsize{9bp}{\baselineskip}\selectfont}
 \newcommand{\liuhao}{\fontsize{7.5bp}{\baselineskip}\selectfont}
 \newcommand{\xiaoliu}{\fontsize{6.5bp}{\baselineskip}\selectfont}
@@ -172,7 +205,7 @@
 	\if@openright\cleardoublepage\else\clearpage\fi
 	\@mainmattertrue
 	\pagenumbering{arabic}
-	\normalsize 
+	\normalsize
 	\def\@tabular{\wuhao\old@tabular}
 	\pagestyle{mainpage}
 }
@@ -311,7 +344,7 @@
 \setlength\belowdisplayshortskip{\abovedisplayshortskip}%
 }
 
-\setlength{\parindent}{2em}
+\setlength{\parindent}{2em}	%全局缩进
 \setlength{\parskip}{0bp \@plus .5bp \@minus .5bp}
 
 \renewenvironment{thebibliography}[1]{%
